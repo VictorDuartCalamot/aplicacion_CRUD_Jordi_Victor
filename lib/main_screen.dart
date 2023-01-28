@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:crud_framework/Screens/Main_menu.dart';
+import 'package:crud_framework/Views/Main_menu.dart';
 import 'package:crud_framework/widgets_lib/app_base.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/images/tft_main_image.jpg'),
+            image: AssetImage('lib/images/main_screen/tft_main_image.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -72,17 +72,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         Opacity(
                           opacity: 1,
                           child: Image(
-                            image: AssetImage('lib/images/tefete_title.png'),
+                            image: AssetImage('lib/images/main_screen/tefete_title.png'),
                             color: Colors.black,
                           ),
                         ),
-                        ClipRect(child:
-                        BackdropFilter(
-                          filter: ImageFilter.blur(sigmaY: 4,sigmaX: 2),
-                        child: Image(image: AssetImage('lib/images/tefete_title.png'),
+                        ClipRect(
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaY: 4, sigmaX: 2),
+                            child: Image(
+                              image: AssetImage('lib/images/main_screen/tefete_title.png'),
+                            ),
+                          ),
                         ),
-                        )
-                          ,),
                       ]),
                     ),
                     FadeTransition(
@@ -111,9 +112,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.only(top: 110),
-                        child: Text('CopyRight: ',
-                            style: TextStyle(color: Colors.white))),
+                      padding: EdgeInsets.only(top: 110),
+                      child: Text(
+                        'FlutterGames - 2023 @TM',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

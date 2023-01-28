@@ -49,22 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     child: ConstrainedBox(
                       constraints: BoxConstraints.expand(height: 300,width: 500),
-                    child: Text('Pantallaa origin_menu'),
+                    child: Text('Pantalla origin_menu'),
                     ),
                   ),
-
                 ),
-
                 //Row de origenes
                 Column(
-
                 ),
               ],
-
             ),
-
-
-
           ),),
       ),
     );

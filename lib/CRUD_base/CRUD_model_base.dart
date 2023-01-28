@@ -1,4 +1,3 @@
-
 abstract class Item<T> {
 
   const Item(this._key);

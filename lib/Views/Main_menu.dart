@@ -1,6 +1,11 @@
+//import 'dart:html';
+import 'package:crud_framework/CRUD_base/CRUD_list_base.dart';
+import 'package:crud_framework/CRUD_base/CRUD_view_base.dart';
+import 'package:crud_framework/Models/champion_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../CRUD_base/CRUD_model_base.dart';
 import 'char_menu.dart';
 import 'origin_menu.dart';
 
@@ -13,7 +18,7 @@ class Main_menu extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/char_menu': (context) => const Char_menu(),
+        '/char_menu': (context) => CRUDListBase<Origen>(itemBuilder: Function, addItemRoute: '', viewItemRoute: ''),
         '/origin_menu': (context) => const Origin_menu(),
       },
       onGenerateRoute: (routeSettings) {
@@ -42,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/images/bcksplash.jpg'),
+            image: AssetImage('lib/images/background_imgs/bcksplash.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -51,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Align(
                 alignment: FractionalOffset.center,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 250),
+                  padding: EdgeInsets.only(bottom: 190),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
@@ -71,23 +76,30 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onTap: () {
                                     Navigator.pushNamed(context, '/char_menu');
                                   },
-                                  child:
-                                  Stack(
-                                    children: [
-
-
+                                  child: Stack(
+                                    children: <Widget>[
                                       Image(
-                                        image:
-                                            AssetImage('lib/images/tefete.jpg'),
+                                          image: AssetImage(
+                                              'lib/images/main_menu/tefete.jpg')
                                       ),
-                                      Text("HOla",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 40,
-                                        ),
-
-
+                                      Positioned.fill(
+                                        child: Align(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "Campeones",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                shadows: [
+                                                  Shadow(
+                                                    blurRadius: 10.0,
+                                                    color: Colors.black,
+                                                    offset: Offset(2.0, 2.0),
+                                                  )
+                                                ],
+                                                color: Colors.white,
+                                                fontSize: 40,
+                                              ),
+                                            )),
                                       ),
                                     ],
                                   ),
@@ -114,9 +126,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Navigator.pushNamed(
                                             context, '/origin_menu');
                                       },
-                                      child: Image(
-                                        image: AssetImage(
-                                            'lib/images/tftmap.webp'),
+                                      child: Stack(
+                                          children: <Widget>[
+                                            Image(
+                                              image: AssetImage(
+                                                  'lib/images/main_menu/tftmap.webp'),
+                                            ),
+                                            Positioned.fill(
+                                              child: Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    "Orígenes",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      shadows: [
+                                                        Shadow(
+                                                          blurRadius: 10.0,
+                                                          color: Colors.black,
+                                                          offset: Offset(2.0, 2.0),
+                                                        )
+                                                      ],
+                                                      color: Colors.white,
+                                                      fontSize: 40,
+                                                    ),
+                                                  )),
+                                            ),
+                                          ],
                                       ),
                                     ),
                                   ),
@@ -132,4 +167,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+
+Widget Function(Item){
+
+
+
+  return Card();
+
+
 }

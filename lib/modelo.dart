@@ -1,5 +1,7 @@
-import 'CRUD_base/CRUD_model_base.dart';
+import 'package:flutter/material.dart';
 
+import 'CRUD_base/CRUD_model_base.dart';
+import 'Models/champion_model.dart';
 
 class Modelo {
   static final Modelo _modelo = Modelo._internal();
@@ -31,8 +33,20 @@ class Modelo {
 
   List<T> getAll<T>() {
     switch (T) {
+      case Origen:
+        {
+          print('soy origen');
+          Map<int, Origen> datos = CRUD_Origen().datos;
+          List<T> elementos = [];
+
+          //datos.forEach((k, value) {elementos.add();});
+
+          return elementos;
+        }
+        break;
+
       default:
-        throw UnimplementedError("Type ${T.toString()} not supported.");
+        throw UnimplementedError("Type ${T.toString()} not supported.PEPITO");
     }
   }
 
