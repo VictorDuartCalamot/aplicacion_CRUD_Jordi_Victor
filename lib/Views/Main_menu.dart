@@ -18,11 +18,16 @@ class Main_menu extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/char_menu': (context) => CRUDListBase<Origen>(itemBuilder: Function, addItemRoute: '', viewItemRoute: ''),
-        '/origin_menu': (context) => const Origin_menu(),
+        '/char_menu': (context) => CRUDListBase<Champion>(
+            itemBuilder: Cards, addItemRoute: '', viewItemRoute: '/test_view'),
+        '/origin_menu': (context) => CRUDListBase<Origen>(
+            itemBuilder: Cards, addItemRoute: '', viewItemRoute: '/test_view'),
       },
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
+          // case '/test_view':{
+          //   return MaterialPageRoute(builder: context)=>CRUDViewBase<Champion>(item: routeSettings.arguments as Champion,detailedView: ,editFormView: ,);
+          // }
         }
         return null;
       },
@@ -80,8 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: <Widget>[
                                       Image(
                                           image: AssetImage(
-                                              'lib/images/main_menu/tefete.jpg')
-                                      ),
+                                              'lib/images/main_menu/tefete.jpg')),
                                       Positioned.fill(
                                         child: Align(
                                             alignment: Alignment.center,
@@ -127,31 +131,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                             context, '/origin_menu');
                                       },
                                       child: Stack(
-                                          children: <Widget>[
-                                            Image(
-                                              image: AssetImage(
-                                                  'lib/images/main_menu/tftmap.webp'),
-                                            ),
-                                            Positioned.fill(
-                                              child: Align(
-                                                  alignment: Alignment.center,
-                                                  child: Text(
-                                                    "Orígenes",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      shadows: [
-                                                        Shadow(
-                                                          blurRadius: 10.0,
-                                                          color: Colors.black,
-                                                          offset: Offset(2.0, 2.0),
-                                                        )
-                                                      ],
-                                                      color: Colors.white,
-                                                      fontSize: 40,
-                                                    ),
-                                                  )),
-                                            ),
-                                          ],
+                                        children: <Widget>[
+                                          Image(
+                                            image: AssetImage(
+                                                'lib/images/main_menu/tftmap.webp'),
+                                          ),
+                                          Positioned.fill(
+                                            child: Align(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  "Orígenes",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    shadows: [
+                                                      Shadow(
+                                                        blurRadius: 10.0,
+                                                        color: Colors.black,
+                                                        offset:
+                                                            Offset(2.0, 2.0),
+                                                      )
+                                                    ],
+                                                    color: Colors.white,
+                                                    fontSize: 40,
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -169,12 +174,33 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-Widget Function(Item){
-
-
-
-  return Card();
-
-
+Widget Cards(item) {
+  if (item is Origen) {
+    return Card(
+      child: Row(
+        children: [
+          Text(item.nombre),
+          Text(item.descripcion),
+        ],
+      ),
+    );
+  } else if (item is Champion) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(item.nombre),
+          Text(item.origen.nombre),
+          Text("Vida: ${(item.vida).toString()}"),
+          Text((item.ataque).toString()),
+          Text((item.magia).toString()),
+        ],
+      ),
+    );
+  } else {
+    return Card(
+      child: Text('ERROR'),
+    );
+  }
+  ;
 }

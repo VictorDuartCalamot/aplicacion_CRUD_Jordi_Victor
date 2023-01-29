@@ -2,6 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Main_menu.dart';
+
 
 class Origin_menu extends StatelessWidget {
   const Origin_menu({super.key});
@@ -12,7 +14,7 @@ class Origin_menu extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-
+        '/Main_menu': (context) => const Main_menu(),
       },
       onGenerateRoute: (routeSettings) {
         switch (routeSettings.name) {
@@ -44,6 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: FractionalOffset.center,
             child: Column(
               children: <Widget> [
+                FloatingActionButton(onPressed:(){
+                  Navigator.pushNamed(context, '/Main_menu');
+                }
+
+                ),
                 //Row de campeones
                 Padding(padding: EdgeInsets.only(top: 120),
                   child: Container(

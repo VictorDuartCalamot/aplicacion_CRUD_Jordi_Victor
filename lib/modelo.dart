@@ -37,16 +37,24 @@ class Modelo {
         {
           print('soy origen');
           Map<int, Origen> datos = CRUD_Origen().datos;
-          List<T> elementos = [];
+          List<Origen> elementos = [];
 
-          //datos.forEach((k, value) {elementos.add();});
+          datos.forEach((k, value) {elementos.add(value);});
 
-          return elementos;
+          return elementos.cast();
         }
-        break;
+      case Champion:
+        {
+          print('soy campeon');
+          Map<int, Champion> datos = CRUD_champion().datos;
+          List<Champion> elementos = [];
 
+          datos.forEach((k, value) {elementos.add(value);});
+
+          return elementos.cast();
+        }
       default:
-        throw UnimplementedError("Type ${T.toString()} not supported.PEPITO");
+        throw UnimplementedError("Type ${T.toString()} not supported.");
     }
   }
 

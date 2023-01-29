@@ -25,7 +25,11 @@ class Origen extends Item<int> {
 
 class CRUD_Origen implements CRUDModelBase<int,Origen> {
 
-  Map<int, Origen> _datos = {};
+  Map<int, Origen> _datos = {
+    1: Origen(1,'Forajido','Pium Pium'),
+    2: Origen(2,'Señores de Fuego','ON FIRE!!!!')
+  };
+
   @override
   void addItem(Origen elItem) {
     // TODO: implement addItem
@@ -77,7 +81,9 @@ class Champion extends Item<int> {
 
 class CRUD_champion implements CRUDModelBase<int,Champion> {
 
-  Map<int, Champion> _datos = {};
+  Map<int, Champion> _datos = {
+    1:Champion(1,CRUD_Origen().datos[1]!,'PEDRO',10,100,10),
+  };
 
   @override
   void addItem(Champion elItem) {
